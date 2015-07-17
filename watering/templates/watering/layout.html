@@ -1,0 +1,46 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}TreeCare Instrument{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "watering/css/style.css" %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="border"></div>
+
+    {% block body %}
+    <div class="container">
+
+        {% block menu %}
+        <nav class="menu">
+            <ul>
+                <li><a class="active"><span class="glyphicon glyphicon-dashboard"></span><br>My Dashboard</a></li>
+                <li><a href="/admin/"><span class="glyphicon glyphicon-list-alt"></span><br>Add Trees</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-stats"></span><br>Reports</a></li>
+            </ul>
+        </nav>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+    {% endblock %}
+
+    <footer>
+        <p>Copyright © {% now 'Y' %}. All Rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    {% block init_script %}{% endblock %}
+    <script src="{% static "watering/js/main.js" %}"></script>
+    {% block extra_script %}{% endblock %}
+</body>
+</html>

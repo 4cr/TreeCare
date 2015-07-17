@@ -1,0 +1,250 @@
+body {
+	font: 17px/1.5em Verdana, Geneva, Tahoma, sans-serif;
+	color: #444;
+	-webkit-font-smothing: antialiased;
+}
+
+/* #29e - blue; #f43 - orange; #3da - green; */
+
+
+/***** Main Menu *****/
+
+
+.border {
+	background: #29e;
+	height: .6em;
+}
+
+.menu {
+	margin: 0 0 50px;
+}
+
+.menu ul {
+	text-align: center;
+	padding: 0;
+}
+
+.menu li {
+	display: inline-block;
+	font-weight: normal;
+	margin: 0 4px 0 8px;
+}
+
+.menu a {
+	color: #000;
+	display: block;
+	padding: 20px 15px;
+	text-decoration: none;
+}
+
+.menu a:hover {
+	background: #eee;
+}
+
+.menu .active,
+.menu .active:hover {
+	background: #29e;
+	color: #fff;
+}
+
+.menu .glyphicon {
+	font-size: 18pt;
+	padding-bottom: 10px;
+}
+
+/*******************/
+
+
+
+/***** Intro *****/
+
+
+.moretrees {
+	margin: 40px 0;
+}
+
+.user-suburbs {
+	margin: 0 0 10px;
+	padding: 0;
+}
+
+.username {
+	font-size: 21pt;
+	text-align: center;
+	margin: 15px;
+}
+
+.nav-pills > li {
+	margin: 5px 0;
+}
+
+.nav-pills > li > a {
+	border-radius: 25px;
+	color: #29e;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+	background-color: #29e;
+}
+
+.info {
+	margin: 0 auto;
+	font-size: 40pt;
+	line-height: 50pt;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.info span {
+	color: #29e;
+}
+
+.description {
+	margin: 30px 0 0;
+	text-align: center;
+}
+
+/*******************/
+
+
+
+/***** Toolbar *****/
+
+.tools .btn-group { display: none;} /* TO DELETE */
+
+.tools {
+	/*margin-bottom: 15px;*/
+}
+
+.tools span {
+	font-size: 15pt;
+}
+
+.suburb-header {
+	font-size: 18pt;
+	display: inline-block;
+	float: left;
+	line-height: 44px;
+	margin: 0 0 0 2px;
+}
+
+.suburb-header span {
+	vertical-align: middle;
+}
+
+.tools .btn-comment {
+	border: 0;
+	outline: 0;
+}
+
+.btn:focus,
+.btn:active,
+.btn:active:focus {
+	outline: none;
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+.suburb-comment-text {
+	padding: 0 5px;
+	color: #777;
+}
+
+.suburb-comment-wrap {
+	margin-bottom: 15px;
+	color: #555;
+}
+
+#suburb-comment {
+	width: 100%;
+}
+
+.btn-comment-done {
+	float: right;
+	padding: 6px 20px;
+	background-color: #29e;
+	color: #fff;
+}
+
+
+/*******************/
+
+
+
+/***** Watering Table *****/
+
+.suburb-trees-table {
+	margin-top: 15px;
+}
+
+.watering-table {
+	font-size: .8em;
+	border: 1px solid #ddd;
+}
+
+.watering-table th {
+	background: #29e;
+	color: #fff;
+	vertical-align: middle!important;
+}
+
+.qty{
+	width: 50px;
+}
+
+.litres {
+	width: 80px;
+}
+
+.watering-table tr:nth-child(2n-1) {
+	background-color: #f1f1f1;
+	transition: all .125s ease-in-out;
+}
+
+.watering-table td {
+	border: none!important;
+	color: #555;
+	/*text-align: center;*/
+	vertical-align: middle!important;
+}
+
+td.disabled {
+	opacity: 0.5;
+}
+
+
+/*******************/
+
+.edit-row .btn {
+	border-bottom: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.edit-row .watering-table {
+	margin: 0;
+	border-bottom: 0;
+}
+
+
+/***** Footer *****/
+
+
+footer {
+	border-top: 4px solid #aaa;
+	margin-top: 35px;
+	padding: 30px;
+	background: #29e;
+	color: #fff;
+	text-align: center;
+	font-size: .8em;
+}
+
+footer p {
+	font-style: italic;
+	margin: 0;
+}
+
+/*******************/

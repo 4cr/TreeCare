@@ -1,0 +1,71 @@
+{% extends "watering/layout.html" %}
+
+{% block content %}
+    <div class="moretrees row">
+        <div class="user-suburbs col-xs-12 col-md-5">
+            <div class="userinfo">
+                <p class="username"><span class="glyphicon glyphicon-user"></span>&nbsp;Jhon Appleseed</p>
+            </div>
+
+            <ul class="suburbs nav nav-pills">
+                {% for suburb in suburbs_list %}
+                    <li{% if forloop.counter == 1 %} class="active"{% endif %}>
+                        <a>{{ suburb.name }}<!--<span class="badge">n's</span>--></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <p class="info col-sm-12 col-md-7">
+            <span>137</span> more <span>trees</span> for you in <span>6</span> suburbs
+        </p>
+    </div>
+
+    <div class="suburb-content">
+        <div class="tools row" role="toolbar">
+            <p class="suburb-header">{{ first_suburb.name }}</p>
+            <button type="button" class="btn btn-default btn-comment" id="btn-suburb-comment"><span class="glyphicon glyphicon-comment"></span></button>
+            <div class="btn-group pull-right">
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Line</button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Done</button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Undo</button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+            </div>
+        </div>
+
+        <!-- Suburb Comment -->
+            <div class="row suburb-comment-text {% if not first_suburb.comment %}hidden{% endif %}">
+                {% autoescape off %}
+                    {{ first_suburb.comment|default:"" }}
+                {% endautoescape %}
+            </div>
+
+        <div class="row suburb-comment-wrap hidden">
+            <form action="{% url 'watering:addcomment' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" id="suburb-number-hidden" name="suburb-number" value="{{ first_suburb.id }}">
+                <input type="hidden" id="suburb-name-hidden" name="suburb-name" value="{{ first_suburb.name }}">
+                <textarea name="suburb-comment" id="suburb-comment" placeholder="Place your comment here..." cols="90" rows="3">{{ first_suburb.comment }}</textarea>
+                <input type="submit" name="suburb-comment-submit" value="Submit comment" class="btn btn-comment-done">
+            </form>
+        </div>
+
+        {% include "watering/components/_suburb-table.html" with suburbs_list=suburbs_list %}
+    </div>
+
+{% endblock %}
+
+{% block init_script %}
+<script>
+    var curInd = 0;
+    var suburbsInfo = [
+        {% autoescape off %}
+        {% for suburb in suburbs_list %}
+            [ "{{ suburb.id }}" , "{{ suburb.name|escapejs }}" , "{{ suburb.comment|default:''|escapejs }}" ]
+            {% if not forloop.last %},{% endif %}
+        {% endfor %}
+        {% endautoescape %}
+    ];
+</script>
+{% endblock %}

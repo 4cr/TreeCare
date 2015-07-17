@@ -1,0 +1,49 @@
+{% regroup watering_sessions_list|dictsort:"suburb.name" by suburb.name as sessions_list %}
+
+{% for suburb in suburbs_list %}
+	<div class="table-responsive suburb-trees-table row
+		{% if forloop.first %}table-active{% else %}hidden{% endif %}">
+		<table class="table watering-table">
+			<thead>
+				<tr>
+					<th class="qty">QTY Items</th>
+					<th class="genus">Genus / species</th>
+					<th class="litres">Litres / tree</th>
+					<th class="wlocation">Location</th>
+					<th class="loctype">Location Type</th>
+					<th class="frequency">Frequency</th>
+					<th class="account">Acc No</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+{% for sessions in sessions_list %}
+	{% if suburb.name == sessions.grouper %}
+		{% for session in sessions.list %}
+			<tr>
+				<td>{{ session.count }}</td>
+				<td>
+					<a href="https://www.google.com/search?q={{ session.genus }}"
+					target="_blank" class="glyphicon glyphicon-tree-deciduous"></a>
+					{{ session.genus }}
+				</td>
+				<td>{{ session.volume }}</td>
+				<td>
+					<a href="https://www.google.com/maps/search/{{ session.location }}, WA, Australia/" target="_blank" class="glyphicon glyphicon-map-marker"></a>&nbsp;{{ session.location }}
+				</td>
+				<td>{{ session.location_type }}</td>
+				<td>{{ session.frequency }}</td>
+				<td>{{ session.account }}</td>
+				<td>
+					{% if not session.is_done %}
+						<button type="button" class="btn btn-default tc-btn-done">
+							<span class="glyphicon glyphicon-ok"></span>&nbsp;Done
+						</button>
+					{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+	{% endif %}
+{% endfor %}
+		</table>
+	</div>
+{% endfor %}
