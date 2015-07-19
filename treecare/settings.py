@@ -69,7 +69,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME' : 'treecare',
         'USER' : 'root',
-        'PASSWORD' : 'Sant1meter',
+        'PASSWORD' : 'root',
         'HOST' : '',
         'PORT' : '',
     }
