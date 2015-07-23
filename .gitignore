@@ -1,4 +1,5 @@
 env
+venv
 
 #Ignore .pyc files, we don't need them
 *.pyc
